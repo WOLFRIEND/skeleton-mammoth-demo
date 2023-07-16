@@ -1,0 +1,21 @@
+.header {
+    display: flex;
+    align-items: center;
+    color: #ffd98a;
+    background-color: #235f42;
+}
+
+.header__img {
+    height: 150px;
+    border-radius: 50%;
+}
+
+.header__body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.header__link {
+    color: inherit;
+}
