@@ -11,11 +11,9 @@ export const Card = ({imgUrl, title, subtitle}) => {
 
     return (
         <div className={`card ${dataState.dataStatus === 'loading' ? "sm-loading" : ""}`} data-sm-config={config}>
-            {dataState.dataStatus === 'loading' ?
-                <div className='card__img sm-item-primary'/>
-                    :
+            <div className='card__img-wrapper sm-item-primary'>
                 <img className='card__img' src={require(`../../images/cards/${imgUrl}`)}/>
-            }
+            </div>
                 <div className='card__body'>
                     <div className='card__details'>
                         <p className='card__title sm-item-secondary'>{title}</p>
