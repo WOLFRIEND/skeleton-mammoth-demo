@@ -7,7 +7,7 @@ export const Card = ({imgUrl, title, subtitle}) => {
     const skeletonState = skeletonStateObject.subscribe();
     const dataState = dataStateObject.subscribe();
 
-    const config = JSON.stringify(skeletonState)
+    const config = JSON.stringify(skeletonState);
 
     return (
         <div className={`card ${dataState.dataStatus === 'loading' ? "sm-loading" : ""}`} data-sm-config={config}>

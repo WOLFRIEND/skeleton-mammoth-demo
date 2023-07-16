@@ -70,6 +70,27 @@ export const Navbar = () => {
         }
     }
 
+    const changeSkeletonOpacity = (e) => {
+        const isChecked = e.target.checked;
+        const opacityValue = e.target.value;
+
+        if (isChecked) {
+            skeletonStateObject.set((prevState) => {
+                return {
+                    ...prevState,
+                    opacity: opacityValue,
+                }
+            })
+        } else {
+            skeletonStateObject.set((prevState) => {
+                return {
+                    ...prevState,
+                    opacity: opacityValue,
+                }
+            })
+        }
+    }
+
     return (
         <div className='navbar'>
             <fieldset className='navbar__item navbar__switcher'>
@@ -111,6 +132,22 @@ export const Navbar = () => {
                     <input type="checkbox" onChange={changeSkeletonAnimation} checked={skeletonState.animated} />
                     <span className="slider round"></span>
                 </label>
+            </fieldset>
+            <fieldset className='navbar__item navbar__switcher'>
+                <legend className='navbar__item-title'>Skeleton opacity:</legend>
+                <select onChange={changeSkeletonOpacity} defaultValue='1'>
+                    <option value='0'>0%</option>
+                    <option value='0.1'>10%</option>
+                    <option value='0.2'>20%</option>
+                    <option value='0.3'>30%</option>
+                    <option value='0.4'>40%</option>
+                    <option value='0.5'>50%</option>
+                    <option value='0.6'>60%</option>
+                    <option value='0.7'>70%</option>
+                    <option value='0.8'>80%</option>
+                    <option value='0.9'>90%</option>
+                    <option value='1'>100%</option>
+                </select>
             </fieldset>
         </div>
     )
