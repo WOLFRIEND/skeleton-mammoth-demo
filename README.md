@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="src/images/sm-logo-big.png" alt="Skeleton Mammoth logotype." style="width: 400px">
+  <img src="https://github.com/WOLFRIEND/skeleton-mammoth-demo/blob/main/src/images/sm-logo-big.png" alt="Skeleton Mammoth logotype." style="width: 400px">
 </div>
 
 <h1 align="center">Skeleton Mammoth</h1>
