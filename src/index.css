@@ -13,9 +13,6 @@ body {
 }
 
 :root {
-  --light-theme-color-bg: #fff;
-  --dark-theme-color-bg: #0f0f0f;
-
   --cards-per-row: 4;
   --card-max-width: 360px;
   --card-margin: 16px;
