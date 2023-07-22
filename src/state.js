@@ -18,6 +18,6 @@ export const createState = (initialState) => {
     };
 };
 
-export const dataStateObject = createState({dataStatus: 'loading'})
-export const websiteStateObject = createState({websiteTheme: 'light'})
-export const skeletonStateObject = createState({animated: true, theme: 'light', opacity: '1'})
+export const dataStateObject = createState({ dataStatus: 'loading' })
+export const websiteStateObject = createState({ websiteTheme: 'light' })
+export const skeletonStateObject = createState({ animation: "wave", theme: 'light', orientation: "left-to-right" })

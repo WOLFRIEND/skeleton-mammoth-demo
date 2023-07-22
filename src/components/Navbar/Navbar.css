@@ -1,4 +1,5 @@
 @import "./Switcher.css";
+@import "./Radio.css";
 
 .navbar {
     display: flex;
@@ -32,9 +33,32 @@
     gap: 1rem;
 }
 
+.navbar__animation-submenu {
+    transition: all .3s;
+    height: 50px;
+    overflow: hidden;
+    padding: 8px 0;
+    opacity: 1;
+}
+
+.navbar__animation-submenu--hidden {
+    height: 0px;
+    padding: 0;
+    opacity: 0;
+}
+
 select {
     padding: 4px;
     background-color: #91b357;
     width: 100%;
     outline: none;
+}
+
+label {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
 }

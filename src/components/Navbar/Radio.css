@@ -1,0 +1,32 @@
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.radio-group > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.radio-group input {
+  margin-right: 8px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  appearance: none;
+}
+
+.radio-group input::after {
+  content: "";
+  display: block;
+  border: 10px solid white;
+  background-color: #23553c;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+.radio-group input:checked::after {
+  border: 5px solid #91b357;
+  width: 10px;
+  height: 10px;
+}
