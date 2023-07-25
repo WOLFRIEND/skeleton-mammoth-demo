@@ -1,5 +1,5 @@
-import './Navbar.css'
 import { websiteStateObject, skeletonStateObject, dataStateObject } from '../../state'
+import './Navbar.css'
 
 export const Navbar = () => {
     const skeletonState = skeletonStateObject.subscribe()
@@ -8,12 +8,7 @@ export const Navbar = () => {
 
     const changeDataLoading = (e) => {
         const isChecked = e.target.checked;
-
-        if (isChecked) {
-            dataStateObject.set({ dataStatus: 'fetched' })
-        } else {
-            dataStateObject.set({ dataStatus: 'loading' })
-        }
+        dataStateObject.set({ dataStatus: isChecked ? 'fetched' : 'loading' })
     }
 
     const changeWebsiteTheme = (e) => {
@@ -33,105 +28,72 @@ export const Navbar = () => {
     const changeSkeletonTheme = (e) => {
         const isChecked = e.target.checked;
 
-        if (isChecked) {
-            skeletonStateObject.set((prevState) => {
-                return {
-                    ...prevState,
-                    theme: 'dark'
-                }
-            })
-        } else {
-            skeletonStateObject.set((prevState) => {
-                return {
-                    ...prevState,
-                    theme: 'light'
-                }
-            })
-        }
+        if (isChecked) skeletonStateObject.set((prevState) => ({ ...prevState, theme: 'dark' }))
+        else skeletonStateObject.set((prevState) => ({ ...prevState, theme: 'light' }))
     }
 
-    const changeSkeletonAnimation = (e) => {
-        const isChecked = e.target.checked;
-
-        if (isChecked) {
-            skeletonStateObject.set((prevState) => {
-                return {
-                    ...prevState,
-                    animated: true
-                }
-            })
-        } else {
-            skeletonStateObject.set((prevState) => {
-                return {
-                    ...prevState,
-                    animated: false
-                }
-            })
-        }
-    }
+    const changeSkeletonAnimation = (e) => skeletonStateObject.set((prevState) => ({
+        ...prevState,
+        animation: e.target.value
+    }))
 
     const changeSkeletonOpacity = (e) => {
-        const isChecked = e.target.checked;
         const opacityValue = e.target.value;
-
-        if (isChecked) {
-            skeletonStateObject.set((prevState) => {
-                return {
-                    ...prevState,
-                    opacity: opacityValue,
-                }
-            })
-        } else {
-            skeletonStateObject.set((prevState) => {
-                return {
-                    ...prevState,
-                    opacity: opacityValue,
-                }
-            })
-        }
+        skeletonStateObject.set((prevState) => ({ ...prevState, opacity: opacityValue }))
     }
 
     return (
         <div className='navbar'>
             <fieldset className='navbar__item navbar__switcher'>
                 <legend className='navbar__item-title'>Data loading:</legend>
-                    <p>
-                    {dataState.dataStatus === 'loading' ? 'Loading...' : 'Fetched'}
-                    </p>
-                <label className="switch">
-                    <input type="checkbox" onChange={changeDataLoading} />
-                    <span className="slider round"></span>
-                </label>
+                    <label htmlFor="loading">
+                        {dataState.dataStatus === 'loading' ? 'loading...' : 'fetched'}
+                        <div className="switch">
+                            <input id="loading" type="checkbox" onChange={changeDataLoading} />
+                            <span className="slider round"></span>
+                        </div>
+                    </label>
             </fieldset>
             <fieldset className='navbar__item navbar__switcher'>
                 <legend className='navbar__item-title'>Website theme:</legend>
-                <p>
-                    {websiteState.websiteTheme === 'light' ? 'Light' : 'Dark'}
-                </p>
-                <label className="switch">
-                    <input type="checkbox" onChange={changeWebsiteTheme} />
-                    <span className="slider round"></span>
+                <label htmlFor="website-theme">
+                    {websiteState.websiteTheme === 'light' ? 'light' : 'dark'}
+                    <div className="switch">
+                        <input id="website-theme" type="checkbox" onChange={changeWebsiteTheme} />
+                        <span className="slider round"></span>
+                    </div>
                 </label>
             </fieldset>
             <fieldset className='navbar__item navbar__switcher'>
                 <legend className='navbar__item-title'>Skeleton theme:</legend>
-                <p>
-                    {skeletonState.theme === 'light' ? 'Light' : 'Dark'}
-                </p>
-                <label className="switch">
-                    <input type="checkbox" onChange={changeSkeletonTheme} />
-                    <span className="slider round"></span>
+                <label htmlFor="skeleton-theme">
+                    {skeletonState.theme || 'light'}
+                    <div className="switch">
+                        <input id="skeleton-theme" type="checkbox" onChange={changeSkeletonTheme} />
+                        <span className="slider round"></span>
+                    </div>
                 </label>
             </fieldset>
             <fieldset className='navbar__item navbar__switcher'>
                 <legend className='navbar__item-title'>Skeleton animation:</legend>
-                <p>
-                    {skeletonState.animated ? 'On' : 'Off'}
-                </p>
-                <label className="switch">
-                    <input type="checkbox" onChange={changeSkeletonAnimation} checked={skeletonState.animated} />
-                    <span className="slider round"></span>
-                </label>
+                <div className='radio-group'>
+                    <div>
+                        <input id="radio-1" onChange={changeSkeletonAnimation} type="radio" checked={skeletonState.animation === "none"} value="none" name="animation" />
+                        <label htmlFor="radio-1">none</label>
+                    </div>
+                    <div>
+                        <input id="radio-2" onChange={changeSkeletonAnimation} type="radio" checked={skeletonState.animation === "wave"} value="wave" name="animation" />
+                        <label htmlFor="radio-2">wave</label>
+                    </div>
+                    <div>
+                        <input id="radio-3" onChange={changeSkeletonAnimation} type="radio" checked={skeletonState.animation === "wave-reverse"} value="wave-reverse" name="animation" />
+                        <label htmlFor="radio-3">wave-reverse</label>
+                    </div>
+                    <div>
+                        <input id="radio-4" onChange={changeSkeletonAnimation} type="radio" checked={skeletonState.animation === "pulse"} value="pulse" name="animation" />
+                        <label htmlFor="radio-4">pulse</label>
+                    </div>
+                </div>
             </fieldset>
             <fieldset className='navbar__item navbar__switcher'>
                 <legend className='navbar__item-title'>Skeleton opacity:</legend>
