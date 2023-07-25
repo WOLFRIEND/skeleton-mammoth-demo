@@ -20,4 +20,4 @@ export const createState = (initialState) => {
 
 export const dataStateObject = createState({ dataStatus: 'loading' })
 export const websiteStateObject = createState({ websiteTheme: 'light' })
-export const skeletonStateObject = createState({ animation: "wave", theme: 'light', orientation: "left-to-right" })
+export const skeletonStateObject = createState({ animation: "wave", theme: 'light', opacity: "1" })

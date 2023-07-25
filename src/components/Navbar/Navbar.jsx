@@ -37,13 +37,9 @@ export const Navbar = () => {
         animation: e.target.value
     }))
 
-    const changeSkeletonOrientation = (e) => {
-        const isChecked = e.target.checked;
-
-        skeletonStateObject.set((prevState) => ({
-            ...prevState,
-            orientation: isChecked ? 'right-to-left' : 'left-to-right'
-        }))
+    const changeSkeletonOpacity = (e) => {
+        const opacityValue = e.target.value;
+        skeletonStateObject.set((prevState) => ({ ...prevState, opacity: opacityValue }))
     }
 
     return (
@@ -89,20 +85,31 @@ export const Navbar = () => {
                         <input id="radio-2" onChange={changeSkeletonAnimation} type="radio" checked={skeletonState.animation === "wave"} value="wave" name="animation" />
                         <label htmlFor="radio-2">wave</label>
                     </div>
-                    <div className={`navbar__animation-submenu${skeletonState.animation === "wave" ? "" : " navbar__animation-submenu--hidden"}`}>
-                        <label htmlFor="skeleton-orientation">
-                            {skeletonState.orientation || 'left-to-right'}
-                            <div className="switch">
-                                <input id="skeleton-orientation" type="checkbox" onChange={changeSkeletonOrientation} />
-                                <span className="slider round"></span>
-                            </div>
-                        </label>
+                    <div>
+                        <input id="radio-3" onChange={changeSkeletonAnimation} type="radio" checked={skeletonState.animation === "wave-reverse"} value="wave-reverse" name="animation" />
+                        <label htmlFor="radio-3">wave-reverse</label>
                     </div>
                     <div>
-                        <input id="radio-3" onChange={changeSkeletonAnimation} type="radio" checked={skeletonState.animation === "pulse"} value="pulse" name="animation" />
-                        <label htmlFor="radio-3">pulse</label>
+                        <input id="radio-4" onChange={changeSkeletonAnimation} type="radio" checked={skeletonState.animation === "pulse"} value="pulse" name="animation" />
+                        <label htmlFor="radio-4">pulse</label>
                     </div>
                 </div>
+            </fieldset>
+            <fieldset className='navbar__item navbar__switcher'>
+                <legend className='navbar__item-title'>Skeleton opacity:</legend>
+                <select onChange={changeSkeletonOpacity} defaultValue='1'>
+                    <option value='0'>0%</option>
+                    <option value='0.1'>10%</option>
+                    <option value='0.2'>20%</option>
+                    <option value='0.3'>30%</option>
+                    <option value='0.4'>40%</option>
+                    <option value='0.5'>50%</option>
+                    <option value='0.6'>60%</option>
+                    <option value='0.7'>70%</option>
+                    <option value='0.8'>80%</option>
+                    <option value='0.9'>90%</option>
+                    <option value='1'>100%</option>
+                </select>
             </fieldset>
         </div>
     )
