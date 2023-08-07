@@ -8,7 +8,7 @@ export const Header = () => {
             <img className='header__img' src={logo} alt='Skeleton Mammoth logotype.'/>
             <div className='header__body'>
                 <h2>Live Demo of the "
-                    <a className='header__link' href='https://github.com/WOLFRIEND/skeleton-mammoth/tree/master'>Skeleton Mammoth</a>
+                    <a className='header__link' href='https://github.com/WOLFRIEND/skeleton-mammoth/tree/main'>Skeleton Mammoth</a>
                     " library.</h2>
                 <div className='header__links'>
                     <iframe src="https://ghbtns.com/github-btn.html?user=WOLFRIEND&repo=skeleton-mammoth&type=star&count=true"
