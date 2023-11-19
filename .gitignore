@@ -5,6 +5,7 @@
 
 # Build output
 /dist
+/build
 
 # Environment files
 .env.local
