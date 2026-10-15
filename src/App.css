@@ -1,12 +1,34 @@
-.container {
+.app {
     display: flex;
-    flex-direction: row;
+    align-items: flex-start;
+}
+
+.content {
+    flex: 1;
+    min-width: 0;
 }
 
 @media (max-width: 767px) {
-    .container {
+    .app {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
+    }
+
+    /* The header, the navbar and the cards become the flex items of the app, to be ordered one under another. */
+    .content {
+        display: contents;
+    }
+
+    .header {
+        order: 1;
+    }
+
+    .navbar {
+        order: 2;
+    }
+
+    .cards {
+        order: 3;
     }
 }
 
